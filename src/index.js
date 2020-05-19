@@ -1,11 +1,7 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+import App from './App';
+import './index.css';
 
-function App() {
-  return (
-    <main className='App'>
-      {/* content goes here */}
-    </main>
-  );
-}
-
-export default App;
+ReactDOM.render(<BrowserRouter><App /></BrowserRouter>, document.getElementById('root'));

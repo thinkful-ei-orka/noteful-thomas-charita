@@ -6,8 +6,125 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/*------------------
+  Global
+------------------*/
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/*------------------
+  Elements
+------------------*/
+a {
+  text-decoration: none;
+  color: black;
+}
+button {
+  display: inline-block;
+  -webkit-appearance: none;
+    -moz-appearance: none;
+    font-size: 16px;
+    padding: 10px 15px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+/*------------------
+  Header
+------------------*/
+header {
+  border: 1px solid black;
+  text-align: center;
+  height: 85px;
+}
+
+/*------------------
+  Layout
+------------------*/
+.body {
+  display: flex;
+}
+.sidebar, main {
+  min-height: calc(100vh - 85px);
+  border: 1px solid black;
+}
+.sidebar {
+  width: 200px;
+  padding-top: 15px;
+}
+main {
+  flex: auto;
+}
+
+/*------------------
+  Folders
+------------------*/
+.folders a {
+  border: 1px solid black;
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+}
+.folders a.active {
+  background: #ddd;
+}
+.folders button {
+  width: calc(100% - 20px);
+  margin: 10px;
+}
+
+/*------------------
+  Notes
+------------------*/
+main {
+  padding: 15px;
+}
+main a {
+  border: 1px solid black;
+  display: flex;
+  padding: 15px;
+  margin-bottom: 10px;
+  justify-content: space-between;
+}
+main a.isLink-false {
+  cursor: default;
+}
+main a h2 {
+  margin-top: 0;
+}
+main a p {
+  margin-bottom: 0;
+}
+main a button {
+  height: 40px;
+  align-self: flex-end;
+}
+
+/*------------------
+  Note Sidebar
+------------------*/
+.note-sidebar {
+  padding: 0 10px;
+}
+.note-sidebar button {
+  width: 100%;
+}
+.note-sidebar h2 {
+  text-align: right;
+}
+
+
+
+/*------------------
+  Note Details
+------------------*/
