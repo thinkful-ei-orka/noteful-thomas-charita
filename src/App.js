@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
+import FileContext from './FileContext';
 
 import Header from './Header';
 import FoldersSidebar from './FoldersSidebar';
@@ -126,21 +127,25 @@ class App extends React.Component {
   }
 
   render () {
+    const contextValue = this.state;
+
     return (
       <>
         <Header></Header>
-        <div className="body">
-          <div className="sidebar">
-            <Route path='/' exact render={() => <FoldersSidebar state={this.state}  />} />
-            <Route path='/:folderName' exact render={() => <FoldersSidebar state={this.state} />}  />
-            <Route path='/:folderName/:noteName' render={(routeProps) => <NoteSidebar routeProps={routeProps} state={this.state}  />}  />
+        <FileContext.Provider value={contextValue}>
+          <div className="body">
+            <div className="sidebar">
+              <Route path='/' exact render={() => <FoldersSidebar />} />
+              <Route path='/:folderName' exact render={() => <FoldersSidebar />}  />
+              <Route path='/:folderName/:noteName' render={(routeProps) => <NoteSidebar routeProps={routeProps}  />}  />
+            </div>
+            <main>
+              <Route path='/' exact render={() => <NotesList />} />
+              <Route path='/:folderName' exact render={(routeProps) => <NotesList routeProps={routeProps} />} />
+              <Route path='/:folderName/:noteName' render={(routeProps) => <NoteDetails routeProps={routeProps} />} />
+            </main>
           </div>
-          <main>
-            <Route path='/' exact render={() => <NotesList state={this.state} />} />
-            <Route path='/:folderName' exact render={(routeProps) => <NotesList routeProps={routeProps} state={this.state} />} />
-            <Route path='/:folderName/:noteName' render={(routeProps) => <NoteDetails routeProps={routeProps} state={this.state} />} />
-          </main>
-        </div>
+        </FileContext.Provider>
       </>
     );
   }

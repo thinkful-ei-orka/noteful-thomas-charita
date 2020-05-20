@@ -1,17 +1,21 @@
 import React from 'react';
 import Note from './Note';
+import FileContext from './FileContext';
 
-function NoteDetails(props) {
-  console.log(props);
-  let noteName = props.routeProps.match.params.noteName;
-  let noteMatch = props.state.notes.filter((note) => note.name === noteName);
+class NoteDetails extends React.Component {
+  static contextType = FileContext;
 
-  return (
-    <div>
-      <Note note={noteMatch[0]} state={props.state} isLink={false}/>
-      <p>{noteMatch[0].content}</p>
-    </div>
-  );
+  render() {
+    let noteName = this.props.routeProps.match.params.noteName;
+    let noteMatch = this.context.notes.filter((note) => note.name === noteName);
+
+    return (
+      <div>
+        <Note note={noteMatch[0]} isLink={false}/>
+        <p>{noteMatch[0].content}</p>
+      </div>
+    );
+  }
 }
 
 export default NoteDetails;

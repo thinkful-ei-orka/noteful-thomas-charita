@@ -5,7 +5,7 @@ function NoteSidebar(props) {
 
   return (
     <div className="note-sidebar">
-      <button role="button" onClick={() => props.routeProps.history.goBack()}>Go back</button>
+      <button onClick={() => props.routeProps.history.goBack()}>Go back</button>
       <h2>{folderName}</h2>
     </div>
   );
