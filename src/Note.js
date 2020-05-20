@@ -1,11 +1,14 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import FileContext from './FileContext';
 
 class Note extends React.Component {
   static contextType = FileContext;
 
   render () {
+    if (this.props.note === undefined) {
+      return <Redirect to='/'></Redirect>
+    }
     let noteFolderId = this.props.note.folderId;
     let noteFolder = this.context.folders.filter((folder) => folder.id === noteFolderId);
     let navLink = `/${noteFolder[0].name}/${this.props.note.name}`;
@@ -42,7 +45,7 @@ class Note extends React.Component {
 
     const buttonClick = (e) => {
       e.preventDefault();
-      console.log('button clicked');
+      this.context.deleteNote(this.props.note.id)
     };
 
     return (

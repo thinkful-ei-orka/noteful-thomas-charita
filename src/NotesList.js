@@ -1,6 +1,7 @@
 import React from 'react';
 import Note from './Note';
 import FileContext from './FileContext';
+import { Redirect } from 'react-router-dom';
 
 class NotesList extends React.Component {
   static contextType = FileContext;
