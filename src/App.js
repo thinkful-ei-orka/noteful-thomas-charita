@@ -135,12 +135,12 @@ class App extends React.Component {
         <FileContext.Provider value={contextValue}>
           <div className="body">
             <div className="sidebar">
-              <Route path='/' exact render={() => <FoldersSidebar />} />
-              <Route path='/:folderName' exact render={() => <FoldersSidebar />}  />
+              <Route path='/' exact component={FoldersSidebar} />
+              <Route path='/:folderName' exact component={FoldersSidebar}  />
               <Route path='/:folderName/:noteName' render={(routeProps) => <NoteSidebar routeProps={routeProps}  />}  />
             </div>
             <main>
-              <Route path='/' exact render={() => <NotesList />} />
+              <Route path='/' exact component={NotesList} />
               <Route path='/:folderName' exact render={(routeProps) => <NotesList routeProps={routeProps} />} />
               <Route path='/:folderName/:noteName' render={(routeProps) => <NoteDetails routeProps={routeProps} />} />
             </main>

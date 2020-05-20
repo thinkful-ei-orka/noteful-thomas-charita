@@ -40,13 +40,18 @@ class Note extends React.Component {
     }
     let isLinkClass = 'isLink-' + this.props.isLink;
 
+    const buttonClick = (e) => {
+      e.preventDefault();
+      console.log('button clicked');
+    };
+
     return (
       <NavLink to={navLink} onClick={(e) => handleClick(e)} className={isLinkClass}>
         <div className="title">
           <h2>{this.props.note.name}</h2>
           <p>Date modified on {fullDate}</p>
         </div>
-        <button type="button">Delete Note</button>
+        <button type="button" onClick={(e) => buttonClick(e)}>Delete Note</button>
       </NavLink>
     );
   }
