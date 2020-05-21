@@ -5,22 +5,23 @@ import { NavLink } from 'react-router-dom';
 class AddFolder extends React.Component {
     static contextType = FileContext;
 
-    buttonSubmit= (e)=> {
-        e.preventDefault();
-        let name= {name: e.target.value};
-        this.context.AddFolder(name)
+    buttonSubmit = (event) => {
+        event.preventDefault();
+        let name = { name: event.target.elements.name.value };
+        console.log(this.context);
+        this.context.addFolder(JSON.stringify(name), this.props.history)
     }
 
-    render () {
+    render() {
         return (
-            <form>
-                <label for="name">Name of Folder:</label>
-                <input type="text" id="name"></input>
-                <button type="Submit" onSubmit={(e) => this.buttonSubmit(e)}>Submit</button>
+            <form onSubmit={(e) => this.buttonSubmit(e)}>
+                <label htmlFor="name">Name of Folder:</label>
+                <input type="text" name="name" id="name"></input>
+                <button type="Submit" >Submit</button>
             </form>
         )
     }
-    
+
 }
 
 export default AddFolder; 

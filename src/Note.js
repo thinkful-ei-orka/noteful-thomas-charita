@@ -47,7 +47,7 @@ class Note extends React.Component {
       e.preventDefault();
       this.context.deleteNote(this.props.note.id,this.props.history)
     };
-    console.log(this.props)
+
     return (
       <NavLink to={navLink} onClick={(e) => handleClick(e)} className={isLinkClass}>
         <div className="title">

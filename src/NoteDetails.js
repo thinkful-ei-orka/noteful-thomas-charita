@@ -11,7 +11,7 @@ class NoteDetails extends React.Component {
     //   return <Redirect to='/'></Redirect>
     // }
 
-    let noteName = this.props.routeProps.match.params.noteName;
+    let noteName = this.props.match.params.noteName;
     let noteMatch = this.context.notes.filter((note) => note.name === noteName);
     if (noteMatch[0] === undefined) {
       return <p>Loading</p>
@@ -19,7 +19,7 @@ class NoteDetails extends React.Component {
 
     return (
       <div>
-        <Note note={noteMatch[0]} isLink={false} history={this.props.routeProps.history} />
+        <Note note={noteMatch[0]} isLink={false} history={this.props.history} />
         <p>{noteMatch[0].content}</p>
       </div>
     );

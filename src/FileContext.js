@@ -11,10 +11,9 @@ export class FileContextProvider extends React.Component {
 
     componentDidMount = () => {
         //add promise all?
-        console.log('didmount fired');
 
         fetch('http://localhost:9090/folders')
-            .then(res => {return res.json()})
+            .then(res => { return res.json() })
             .then(folders => {
                 this.setState({
                     folders: folders
@@ -35,7 +34,7 @@ export class FileContextProvider extends React.Component {
             .catch(error => { return error.message });
     }
 
-    deleteNote = (noteID,history) => {
+    deleteNote = (noteID, history) => {
         console.log(history)
         fetch(`http://localhost:9090/notes/${noteID}`, {
             method: 'DELETE',
@@ -59,7 +58,7 @@ export class FileContextProvider extends React.Component {
             .catch(error => { return error.message })
     }
 
-    addFolder =(name) => {
+    addFolder = (name, history) => {
         fetch(`http://localhost:9090/folders`, {
             method: 'POST',
             headers: {
@@ -73,15 +72,37 @@ export class FileContextProvider extends React.Component {
                 } return res.json()
             })
             .then(data => {
-                //history.push('/')
-                let newFolders = [...this.state.folders,data]
+                history.push('/')
+                let newFolders = [...this.state.folders, data];
                 this.setState({
                     folders: newFolders
                 })
             })
             .catch(error => { return error.message })
     }
-    
+
+    addNote = (note, history) => {
+        fetch(`http://localhost:9090/notes`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: note
+        })
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error("bad stuff yo");
+                } return res.json()
+            })
+            .then(data => {
+                history.push('/')
+                let newNotes = [...this.state.notes, data];
+                this.setState({
+                    notes: newNotes
+                })
+            })
+            .catch(error => { return error.message })
+    }
 
     render() {
         return (
@@ -89,6 +110,8 @@ export class FileContextProvider extends React.Component {
                 folders: this.state.folders,
                 notes: this.state.notes,
                 deleteNote: this.deleteNote,
+                addFolder: this.addFolder,
+                addNote: this.addNote
             }}>
                 {this.props.children}
             </FileContext.Provider>

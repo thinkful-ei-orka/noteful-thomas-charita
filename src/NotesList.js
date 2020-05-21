@@ -1,6 +1,7 @@
 import React from 'react';
 import Note from './Note';
 import FileContext from './FileContext';
+import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 
 class NotesList extends React.Component {
@@ -8,11 +9,19 @@ class NotesList extends React.Component {
 
   render() {
     let notes = [];
+    console.log(this.props);
 
-    if (typeof this.props.routeProps !== 'undefined') { // A folder is filtered
-      let folderName = this.props.routeProps.match.params.folderName;
+    if (JSON.stringify(this.props.match.params) !== '{}') { // A folder is filtered
+      let folderName = this.props.match.params.folderName;
       let folderMatch = this.context.folders.filter((folder) => folder.name === folderName);
+
+      //If we have nothing, provide placeholder until store is updated
+      if (folderMatch[0] === undefined) {
+        return <p>Loading</p>
+      } 
+
       let folderId = folderMatch[0].id;
+      
 
       let notesInFolder = this.context.notes.filter((note) => note.folderId === folderId);
       notesInFolder.forEach((note) => {
@@ -27,7 +36,9 @@ class NotesList extends React.Component {
     return (
       <div>
         {notes}
+        <Link to="/addNote">
         <button type="button">Add note</button>
+        </Link>
       </div>
     );
   }
