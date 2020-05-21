@@ -11,7 +11,7 @@ class Note extends React.Component {
     }
     let noteFolderId = this.props.note.folderId;
     let noteFolder = this.context.folders.filter((folder) => folder.id === noteFolderId);
-    let navLink = `/${noteFolder[0].name}/${this.props.note.name}`;
+    let navLink = `/folders/${noteFolder[0].name}/${this.props.note.name}`;
 
     let modifiedDate = new Date(this.props.note.modified);
 
@@ -45,9 +45,9 @@ class Note extends React.Component {
 
     const buttonClick = (e) => {
       e.preventDefault();
-      this.context.deleteNote(this.props.note.id)
+      this.context.deleteNote(this.props.note.id,this.props.history)
     };
-
+    console.log(this.props)
     return (
       <NavLink to={navLink} onClick={(e) => handleClick(e)} className={isLinkClass}>
         <div className="title">

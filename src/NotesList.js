@@ -16,11 +16,11 @@ class NotesList extends React.Component {
 
       let notesInFolder = this.context.notes.filter((note) => note.folderId === folderId);
       notesInFolder.forEach((note) => {
-        notes.push(<Note key={note.id} note={note} isLink={true}/>);
+        notes.push(<Note key={note.id} note={note} isLink={true} history={this.props.history} />);
       });
     } else { // We are on the root page
       this.context.notes.forEach((note) => {
-        notes.push(<Note key={note.id} note={note} isLink={true}/>);
+        notes.push(<Note key={note.id} note={note} isLink={true} history={this.props.history} />);
       });
     }
 

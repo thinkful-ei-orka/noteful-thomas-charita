@@ -35,7 +35,8 @@ export class FileContextProvider extends React.Component {
             .catch(error => { return error.message });
     }
 
-    deleteNote = (noteID) => {
+    deleteNote = (noteID,history) => {
+        console.log(history)
         fetch(`http://localhost:9090/notes/${noteID}`, {
             method: 'DELETE',
             headers: {
@@ -48,6 +49,7 @@ export class FileContextProvider extends React.Component {
                 } return res.json()
             })
             .then(data => {
+                history.push('/')
                 let newNotes = this.state.notes.filter(note =>
                     note.id !== noteID)
                 this.setState({

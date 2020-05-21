@@ -20,15 +20,15 @@ class App extends React.Component {
           <div className="body">
             <div className="sidebar">
               <Route path='/' exact component={FoldersSidebar} />
-              <Route path='/:folderName' exact component={FoldersSidebar} />
-              <Route path='/:folderName/:noteName' render={(routeProps) => <NoteSidebar routeProps={routeProps} />} />
               <Route path='/addFolder' exact component={AddSidebar} />
+              <Route path='/folders/:folderName/' exact component={FoldersSidebar} />
+              <Route path='/folders/:folderName/:noteName' render={(routeProps) => <NoteSidebar routeProps={routeProps} />} />
             </div>
             <main>
               <Route path='/' exact component={NotesList} />
-              <Route path='/:folderName' exact render={(routeProps) => <NotesList routeProps={routeProps} />} />
-              <Route path='/:folderName/:noteName' render={(routeProps) => <NoteDetails routeProps={routeProps} />} />
               <Route path='/addFolder' exact component={AddFolder} />
+              <Route path='/folders/:folderName' exact render={(routeProps) => <NotesList routeProps={routeProps} />} />
+              <Route path='/folders/:folderName/:noteName' render={(routeProps) => <NoteDetails routeProps={routeProps} />} />
             </main>
           </div>
         </FileContextProvider>
