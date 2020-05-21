@@ -59,6 +59,30 @@ export class FileContextProvider extends React.Component {
             .catch(error => { return error.message })
     }
 
+    addFolder =(name) => {
+        fetch(`http://localhost:9090/folders`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: name
+        })
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error("bad stuff yo");
+                } return res.json()
+            })
+            .then(data => {
+                //history.push('/')
+                let newFolders = [...this.state.folders,data]
+                this.setState({
+                    folders: newFolders
+                })
+            })
+            .catch(error => { return error.message })
+    }
+    
+
     render() {
         return (
             <FileContext.Provider value={{
