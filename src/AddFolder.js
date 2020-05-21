@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-class addFolder extends React.Component {
+class AddFolder extends React.Component {
 
     render () {
         return (
@@ -14,4 +14,4 @@ class addFolder extends React.Component {
     
 }
 
-export default addFolder; 
+export default AddFolder; 
