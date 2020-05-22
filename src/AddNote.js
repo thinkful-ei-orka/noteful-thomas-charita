@@ -1,5 +1,6 @@
 import React from 'react';
 import FileContext from './FileContext';
+import PropTypes from 'prop-types'
 
 class AddNote extends React.Component {
     state = {
@@ -87,6 +88,10 @@ class AddNote extends React.Component {
         )
     }
 
+}
+
+AddNote.propTypes = {
+    history: PropTypes.object.isRequired,
 }
 
 export default AddNote;

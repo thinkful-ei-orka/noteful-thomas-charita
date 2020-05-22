@@ -1,5 +1,6 @@
 import React from 'react';
 import FileContext from './FileContext';
+import PropTypes from 'prop-types';
 
 class AddFolder extends React.Component {
     state = {
@@ -51,4 +52,8 @@ class AddFolder extends React.Component {
 
 }
 
-export default AddFolder; 
+AddFolder.propTypes = {
+    history: PropTypes.object.isRequired,
+}
+
+export default AddFolder;
