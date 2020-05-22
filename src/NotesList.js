@@ -18,7 +18,7 @@ class NotesList extends React.Component {
       //If we have nothing, provide placeholder until store is updated
       if (folderMatch[0] === undefined) {
         return <p>Loading</p>
-      } 
+      }
 
       let folderId = folderMatch[0].id;
       
