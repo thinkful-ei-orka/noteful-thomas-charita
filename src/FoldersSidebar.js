@@ -2,7 +2,7 @@ import React from 'react';
 import Folder from './Folder';
 import FileContext from './FileContext';
 import { Link } from 'react-router-dom';
-import ErrorPage from './ErrorPage';
+import PropTypes from 'prop-types'
 
 class FoldersSidebar extends React.Component {
   static contextType = FileContext;
@@ -23,6 +23,10 @@ class FoldersSidebar extends React.Component {
       </div>
     );
   }
+}
+
+FoldersSidebar.propTypes = {
+  folders: PropTypes.arrayOf(PropTypes.id),
 }
 
 export default FoldersSidebar;

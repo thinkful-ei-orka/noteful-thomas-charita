@@ -2,7 +2,9 @@ import React from 'react';
 import Note from './Note';
 import FileContext from './FileContext';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types'
 import { Redirect } from 'react-router-dom';
+
 
 class NotesList extends React.Component {
   static contextType = FileContext;
@@ -42,6 +44,12 @@ class NotesList extends React.Component {
       </div>
     );
   }
+}
+
+NotesList.propTypes = {
+  history: PropTypes.object.isRequired,
+  isLink: PropTypes.bool,
+  note: PropTypes.object
 }
 
 export default NotesList;
