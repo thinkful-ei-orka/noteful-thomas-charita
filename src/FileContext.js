@@ -6,7 +6,7 @@ export default FileContext;
 export class FileContextProvider extends React.Component {
     state = {
         folders: [],
-        notes: []
+        notes: [],
     }
 
     componentDidMount = () => {
