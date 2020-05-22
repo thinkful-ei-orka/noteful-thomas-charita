@@ -1,6 +1,7 @@
 import React from 'react';
 import Note from './Note';
 import FileContext from './FileContext';
+import PropTypes from 'prop-types'
 import { Redirect } from 'react-router-dom';
 
 class NoteDetails extends React.Component {
@@ -24,6 +25,12 @@ class NoteDetails extends React.Component {
       </div>
     );
   }
+}
+
+NoteDetails.propTypes = {
+  history: PropTypes.object.isRequired,
+  isLink: PropTypes.bool,
+  note: PropTypes.object
 }
 
 export default NoteDetails;
