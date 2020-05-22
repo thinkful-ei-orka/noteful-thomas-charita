@@ -2,6 +2,7 @@ import React from 'react';
 import Folder from './Folder';
 import FileContext from './FileContext';
 import { Link } from 'react-router-dom';
+import ErrorPage from './ErrorPage';
 
 class FoldersSidebar extends React.Component {
   static contextType = FileContext;
