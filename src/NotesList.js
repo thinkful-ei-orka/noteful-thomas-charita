@@ -3,7 +3,6 @@ import Note from './Note';
 import FileContext from './FileContext';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types'
-import { Redirect } from 'react-router-dom';
 
 
 class NotesList extends React.Component {
@@ -11,7 +10,6 @@ class NotesList extends React.Component {
 
   render() {
     let notes = [];
-    console.log(this.props);
 
     if (JSON.stringify(this.props.match.params) !== '{}') { // A folder is filtered
       let folderName = this.props.match.params.folderName;

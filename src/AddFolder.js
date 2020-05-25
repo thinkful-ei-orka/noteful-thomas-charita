@@ -42,10 +42,11 @@ class AddFolder extends React.Component {
         return (
             <form onSubmit={(e) => this.buttonSubmit(e)}>
                 <label htmlFor="name">Name of Folder:</label>
-                {this.state.lengthFlag &&
-                <p className="error">{this.validateFolderName()}</p>}
                 <input type="text" name="name" id="name" value={this.state.value} onChange={e => this.setName(e.target.value)}></input>
-                <button type="Submit" disabled={this.validateFolderName()}>Submit</button>
+                <br />
+                <button type="Submit" className='addButton' disabled={this.validateFolderName()}>Submit</button>
+                {this.state.lengthFlag && this.state.value.length < 3 &&
+                <div className="errorbox"><p className="error">{this.validateFolderName()}</p></div>}
             </form>
         )
     }
